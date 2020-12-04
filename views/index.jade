@@ -1,0 +1,34 @@
+extends layout
+block content
+     h1 #{title}
+
+     hr
+     form.well(action="/addtask", method="post")
+       label Item Name:
+       input(name="name", type="textbox")
+       label Item Category:
+       input(name="category", type="textbox")
+       br
+       button.btn(type="submit") Add item
+     form.well(action="/findtask", method="post")
+      label Find Item:
+      input(name="name", type="textbox")
+      br
+      h1 Search Results
+      table.table.table-striped.table-bordered
+        tr
+          td Name
+          td Category
+          td Date        
+        if (typeof results === "undefined")
+          p No Result
+        else  
+          each result in results
+            tr
+              td #{result.name}
+              td #{result.category}
+              - var date  = new Date(result.date);
+              - var day   = date.getDate();
+              - var month = date.getMonth() + 1;
+              - var year  = date.getFullYear();
+              td #{month + "/" + day + "/" + year}
