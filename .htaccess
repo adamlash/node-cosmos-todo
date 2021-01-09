@@ -1,2 +1,4 @@
-RewriteCond %{HTTP:x-test-header} !^abc123$ [NC]
+RewriteEngine On
+
+RewriteCond %{HTTP:X-Azure-FDID} !^a9b3283d-7999-46ed-8a14-c7561a66da71$ [NC]
 RewriteRule ^ - [F]
