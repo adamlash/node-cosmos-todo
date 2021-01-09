@@ -1,0 +1,2 @@
+RewriteCond %{HTTP:x-test-header} !^abc123$ [NC]
+RewriteRule ^ - [F]
